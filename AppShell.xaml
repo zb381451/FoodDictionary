@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="FoodDictionary.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:FoodDictionary.Pages"
+    Title="FoodDictionary">
+
+    <TabBar>
+        <Tab Title="Food Wheel"
+             Icon="foodwheel.png">
+            <ShellContent ContentTemplate="{DataTemplate local:FoodWheel}" />
+        </Tab>
+        <Tab Title="My Lists"
+             Icon="mylists.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MyLists}" />
+        </Tab>
+        <Tab Title="Add Food"
+             Icon="addfood.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AddFood}" />
+        </Tab>
+        <Tab Title="Catalog"
+             Icon="catalog.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Catalog}" />
+        </Tab>
+        <Tab Title="Settings"
+             Icon="settings.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Settings}" />
+        </Tab>
+    </TabBar>
+
+</Shell>
