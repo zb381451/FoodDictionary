@@ -6,7 +6,8 @@ namespace FoodDictionary
     {
         public static MauiApp CreateMauiApp()
         {
-            var builder = MauiApp.CreateBuilder();
+			
+			var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -16,7 +17,8 @@ namespace FoodDictionary
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+			builder.Services.AddSingleton<DatabaseService>();
+			builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
