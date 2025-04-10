@@ -3,10 +3,111 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDictionary.Pages.Catalog"
              Title="Catalog">
-    <VerticalStackLayout>
-        <Label 
-            Text="Catalog"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout
+        Padding="15,0"
+        Spacing="10">
+
+        <Border BackgroundColor="White" Stroke="Black" StrokeThickness="4" StrokeShape="RoundRectangle 10,10,10,10" HorizontalOptions="Fill" HeightRequest="60">
+
+            <HorizontalStackLayout
+                Padding="15,0"
+                Spacing="10">
+                <Image Source="food_dictionary_search.png" HeightRequest="45" WidthRequest="45"/>
+                <Entry x:Name="SearchTerm" Placeholder="Search" FontSize="25" />
+            </HorizontalStackLayout>
+
+        </Border>
+
+        <HorizontalStackLayout
+            Padding="15,0"
+            Spacing="10"
+            HorizontalOptions="End">
+
+            <ImageButton Source="food_dictionary_filter.png" WidthRequest="5" HeightRequest="5"/>
+            <Label Text="Filter" FontSize="20"/>
+
+        </HorizontalStackLayout>
+
+        <ScrollView>
+            
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+
+                    <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10">
+                        <Image Source="food_dictionary_no_image.png"/>
+                    </Border>
+                    
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Food name" FontSize="25"/>
+                        <Label Text="Price" FontSize="15" VerticalOptions="Center" HorizontalOptions="End"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Serving size" FontSize="15"/>
+                    <Label Text="Vitamins &amp; minerals" FontSize="15"/>
+
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+
+                    <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10">
+                        <Image Source="food_dictionary_no_image.png"/>
+                    </Border>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Food name" FontSize="25"/>
+                        <Label Text="Price" FontSize="15" VerticalOptions="Center" HorizontalOptions="End"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Serving size" FontSize="15"/>
+                    <Label Text="Vitamins &amp; minerals" FontSize="15"/>
+
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+
+                    <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10">
+                        <Image Source="food_dictionary_no_image.png"/>
+                    </Border>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Food name" FontSize="25"/>
+                        <Label Text="Price" FontSize="15" VerticalOptions="Center" HorizontalOptions="End"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Serving size" FontSize="15"/>
+                    <Label Text="Vitamins &amp; minerals" FontSize="15"/>
+
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+
+                    <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10">
+                        <Image Source="food_dictionary_no_image.png"/>
+                    </Border>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Food name" FontSize="25"/>
+                        <Label Text="Price" FontSize="15" VerticalOptions="Center" HorizontalOptions="End"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="Serving size" FontSize="15"/>
+                    <Label Text="Vitamins &amp; minerals" FontSize="15"/>
+
+                </VerticalStackLayout>
+
+            </Grid>
+            
+        </ScrollView>
+
     </VerticalStackLayout>
 </ContentPage>
