@@ -1,0 +1,30 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDictionary.Pages.Settings"
+             Title="Settings">
+
+    <VerticalStackLayout Padding="10">
+        <Label Text="Settings" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="Choose Background Color" Margin="0,20,0,5" TextColor="Black"/>
+
+        <!-- 🧱 Black border with gray background Picker -->
+        <Border Stroke="Black"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 6"
+                Padding="4">
+            <Picker x:Name="ColorPicker"
+                    SelectedIndexChanged="OnColorSelected"
+                    TextColor="Black"
+                    BackgroundColor="Grey">
+                <Picker.Items>
+                    <x:String>White</x:String>
+                    <x:String>LightGray</x:String>
+                    <x:String>LightBlue</x:String>
+                    <x:String>LightYellow</x:String>
+                    <x:String>LightGreen</x:String>
+                </Picker.Items>
+            </Picker>
+        </Border>
+
+    </VerticalStackLayout>
+</ContentPage>

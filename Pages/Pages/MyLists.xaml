@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDictionary.Pages.MyLists"
+             Title="MyLists">
+
+    <VerticalStackLayout
+        Padding="15,0"
+        Spacing="25">
+
+        <Border BackgroundColor="#90dbb8" Stroke="#88918d" StrokeThickness="4" StrokeShape="RoundRectangle 10,10,10,10" HorizontalOptions="Fill" HeightRequest="150">
+            
+            <VerticalStackLayout 
+                Padding="15,0">
+                
+                <Grid 
+                    Padding="15,15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label TextColor="Black" WidthRequest="200" Text="Vitamin A Favorites" HorizontalTextAlignment="Start" FontSize="Large"/>
+                    <Image Source="food_dictionary_dots.png" Grid.Column="1" HorizontalOptions="End" HeightRequest="10"/>
+                </Grid>
+
+                <Grid RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label TextColor="Black" WidthRequest="100" Text="Cantaloupe" HorizontalTextAlignment="Start" FontSize="Small"/>
+                    <Label TextColor="Black" Grid.Column="1" WidthRequest="100" Text="Bluefin Tuna" HorizontalTextAlignment="Start" FontSize="Small"/>
+                    <Label TextColor="Black" Grid.Column="2" WidthRequest="100" Text="King Mackerel" HorizontalTextAlignment="Start" FontSize="Small"/>
+                    <Label TextColor="Black" Grid.Row="1" WidthRequest="100" Text="Carrot" HorizontalTextAlignment="Start" FontSize="Small"/>
+                    <Label TextColor="Black" Grid.Row="1" Grid.Column="1" WidthRequest="100" Text="Mango" HorizontalTextAlignment="Start" FontSize="Small"/>
+                    <Label TextColor="Black" Grid.Row="1" Grid.Column="2" WidthRequest="100" Text="Grapefruit" HorizontalTextAlignment="Start" FontSize="Small"/>
+                    <Label TextColor="Black" Grid.Row="2" WidthRequest="100" Text="Spinach" HorizontalTextAlignment="Start" FontSize="Small"/>
+                    <Label TextColor="Black" Grid.Row="2" Grid.Column="1" WidthRequest="100" Text="Eggs" HorizontalTextAlignment="Start" FontSize="Small"/>
+                    <Label TextColor="Black" Grid.Row="2" Grid.Column="2" WidthRequest="100" Text="Kale" HorizontalTextAlignment="Start" FontSize="Small"/>
+                    <Label TextColor="Black" Grid.Row="2" Grid.Column="3" WidthRequest="100" Text="+ 4 more" HorizontalTextAlignment="Start" FontSize="Small"/>
+                </Grid>
+                
+            </VerticalStackLayout>
+            
+        </Border>
+        
+    </VerticalStackLayout>
+</ContentPage>
