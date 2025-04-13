@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Toolkit.Hosting;
 
 namespace FoodDictionary
 {
@@ -9,6 +10,7 @@ namespace FoodDictionary
 			
 			var builder = MauiApp.CreateBuilder();
             builder
+                .ConfigureSyncfusionToolkit()
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
