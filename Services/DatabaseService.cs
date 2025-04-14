@@ -2,37 +2,40 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.Maui.Storage; 
 
-public class DatabaseService
+namespace FoodDictionary.Services 
 {
-	private static SQLiteAsyncConnection _database;
-	private static readonly string dbName = "FoodDictionarydb.db";
+    public class DatabaseService
+    {
+        private static SQLiteAsyncConnection _database;
+        private static readonly string dbName = "FoodDictionarydb.db";
 
-	public async Task InitAsync()
-	{
-		if (_database != null)
-			return;
+        public async Task InitAsync()
+        {
+            if (_database != null)
+                return;
 
-		string dbPath = Path.Combine(FileSystem.AppDataDirectory, dbName);
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, dbName);
 
-		if (!File.Exists(dbPath))
-		{
-			// Update this to your full embedded resource name
-			var resourceName = "FoodDictionary.Services.FoodDictionarydb.db";
+            if (!File.Exists(dbPath))
+            {
+                var resourceName = "FoodDictionary.Services.FoodDictionarydb.db";
 
-			var assembly = Assembly.GetExecutingAssembly();
-			using Stream resourceStream = assembly.GetManifestResourceStream(resourceName)
-				?? throw new FileNotFoundException($"Embedded resource '{resourceName}' not found.");
+                var assembly = Assembly.GetExecutingAssembly();
+                using Stream resourceStream = assembly.GetManifestResourceStream(resourceName)
+                    ?? throw new FileNotFoundException($"Embedded resource '{resourceName}' not found.");
 
-			using FileStream fileStream = File.Create(dbPath);
-			await resourceStream.CopyToAsync(fileStream);
-		}
+                using FileStream fileStream = File.Create(dbPath);
+                await resourceStream.CopyToAsync(fileStream);
+            }
 
-		_database = new SQLiteAsyncConnection(dbPath);
-	}
+            _database = new SQLiteAsyncConnection(dbPath);
+        }
 
-	public static SQLiteAsyncConnection GetConnection()
-	{
-		return _database;
-	}
+        public static SQLiteAsyncConnection GetConnection()
+        {
+            return _database;
+        }
+    }
 }

@@ -7,20 +7,22 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
 
-
+            <!-- set title label color for visibility -->
             <Label Text="Add Food"
                    FontSize="24"
+                   TextColor="Black"
                    HorizontalOptions="Center" 
                    VerticalOptions="Start" />
 
-            <Label Text="Food Name" />
-            <Entry x:Name="NameEntry" Placeholder="Enter food name" />
+            <!-- set label and entry colors -->
+            <Label Text="Food Name" TextColor="Black"/>
+            <Entry x:Name="NameEntry" Placeholder="Enter food name" TextColor="Black"/>
 
-            <Label Text="Serving Size" />
-            <Entry x:Name="ServingSizeEntry" Placeholder="e.g. 1 medium" />
+            <Label Text="Serving Size" TextColor="Black"/>
+            <Entry x:Name="ServingSizeEntry" Placeholder="e.g. 1 medium" TextColor="Black"/>
 
-            <Label Text="Price (optional)" />
-            <Entry x:Name="PriceEntry" Keyboard="Numeric" Placeholder="e.g. 1.99" />
+            <Label Text="Price (optional)" TextColor="Black"/>
+            <Entry x:Name="PriceEntry" Keyboard="Numeric" Placeholder="e.g. 1.99" TextColor="Black"/>
 
             <Button Text="Add Food" Clicked="OnAddFoodClicked" />
 
