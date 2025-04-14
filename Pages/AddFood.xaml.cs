@@ -1,67 +1,81 @@
 using Microsoft.Maui.Controls;
 using FoodDictionary.Models;
+using FoodDictionary.Services; // required for AppState
 
 namespace FoodDictionary.Pages;
 
 public partial class AddFood : ContentPage
 {
-	private readonly DatabaseService _databaseService;
+    private readonly DatabaseService _databaseService;
 
-	public AddFood(DatabaseService databaseService)
-	{
-		InitializeComponent();
-		_databaseService = databaseService;
-	}
+    public AddFood(DatabaseService databaseService)
+    {
+        InitializeComponent();
+        _databaseService = databaseService;
 
-	private async void OnAddFoodClicked(object sender, EventArgs e)
-	{
-		
-		await _databaseService.InitAsync();
+        // set bg from app state
+        var appState = Application.Current?.Handler?.MauiContext?.Services.GetService<AppState>();
+        if (appState != null)
+        {
+            this.BackgroundColor = appState.BackgroundColor;
+        }
+    }
 
-		string name = NameEntry.Text?.Trim();
-		string serving = ServingSizeEntry.Text?.Trim();
-		string priceText = PriceEntry.Text?.Trim();
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
 
-		
-		if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(serving))
-		{
-			await DisplayAlert("Missing Info", "Name and serving size are required.", "OK");
-			return;
-		}
+        // restore bg
+        var appState = Application.Current?.Handler?.MauiContext?.Services.GetService<AppState>();
+        if (appState != null)
+        {
+            this.BackgroundColor = appState.BackgroundColor;
+        }
+    }
 
-		decimal? price = null;
-		if (decimal.TryParse(priceText, out decimal parsedPrice))
-		{
-			price = parsedPrice;
-		}
+    private async void OnAddFoodClicked(object sender, EventArgs e)
+    {
+        await _databaseService.InitAsync();
 
-		var newFood = new Food
-		{
-			Name = name,
-			Serving_Size = serving,
-			Price = price
-		};
+        string name = NameEntry.Text?.Trim();
+        string serving = ServingSizeEntry.Text?.Trim();
+        string priceText = PriceEntry.Text?.Trim();
 
-		// put food item into the database or throwing the error for what went wrong
-		try
-		{
-			await DatabaseService.GetConnection().InsertAsync(newFood);
+        if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(serving))
+        {
+            await DisplayAlert("Missing Info", "Name and serving size are required.", "OK");
+            return;
+        }
 
-		
-			StatusLabel.Text = "Food added successfully!";
-			StatusLabel.IsVisible = true;
+        decimal? price = null;
+        if (decimal.TryParse(priceText, out decimal parsedPrice))
+        {
+            price = parsedPrice;
+        }
 
-			
-			NameEntry.Text = string.Empty;
-			ServingSizeEntry.Text = string.Empty;
-			PriceEntry.Text = string.Empty;
-		}
-		catch (Exception ex)
-		{
-			
-			StatusLabel.Text = $"Failed to add food: {ex.Message}";
-			StatusLabel.TextColor = Microsoft.Maui.Graphics.Colors.Red;
-			StatusLabel.IsVisible = true;
-		}
-	}
+        var newFood = new Food
+        {
+            Name = name,
+            Serving_Size = serving,
+            Price = price
+        };
+
+        try
+        {
+            await DatabaseService.GetConnection().InsertAsync(newFood);
+
+            StatusLabel.Text = "Food added successfully!";
+            StatusLabel.IsVisible = true;
+
+            NameEntry.Text = string.Empty;
+            ServingSizeEntry.Text = string.Empty;
+            PriceEntry.Text = string.Empty;
+        }
+        catch (Exception ex)
+        {
+            StatusLabel.Text = $"Failed to add food: {ex.Message}";
+            StatusLabel.TextColor = Microsoft.Maui.Graphics.Colors.Red;
+            StatusLabel.IsVisible = true;
+        }
+    }
 }
