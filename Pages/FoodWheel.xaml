@@ -11,12 +11,12 @@
     </ContentPage.BindingContext>
 
     <VerticalStackLayout
-    Padding="30,0"
-    Spacing="25"
-    VerticalOptions="Center">
+        Padding="30,0"
+        Spacing="25"
+        VerticalOptions="Center">
 
         <chart:SfCircularChart WidthRequest="450" HeightRequest="450">
-            
+
             <chart:SfCircularChart.Resources>
                 <DataTemplate x:Key="labelTemplate">
                     <HorizontalStackLayout>
@@ -26,18 +26,21 @@
             </chart:SfCircularChart.Resources>
 
             <chart:SfCircularChart.Title>
-                <Label Text="What qualities are you looking for?" FontSize="20" HorizontalTextAlignment="Center"/>
+                <!-- changed text color to black -->
+                <Label Text="What qualities are you looking for?" 
+                       FontSize="20" 
+                       HorizontalTextAlignment="Center" 
+                       TextColor="Black"/>
             </chart:SfCircularChart.Title>
 
             <chart:PieSeries ItemsSource="{Binding Data}"
-                XBindingPath="Name"
-                YBindingPath="Region"
-                PaletteBrushes="{Binding CustomBrushes}"
-                ShowDataLabels="True"
-                LabelTemplate="{StaticResource labelTemplate}"/>
-
+                             XBindingPath="Name"
+                             YBindingPath="Region"
+                             PaletteBrushes="{Binding CustomBrushes}"
+                             ShowDataLabels="True"
+                             LabelTemplate="{StaticResource labelTemplate}"/>
         </chart:SfCircularChart>
-        
+
     </VerticalStackLayout>
 
 </ContentPage>
