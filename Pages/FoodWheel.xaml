@@ -4,7 +4,7 @@
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              xmlns:model="clr-namespace:FoodDictionary"
              x:Class="FoodDictionary.Pages.FoodWheel"
-             Title="FoodWheel">
+             Title="Food Wheel">
 
     <ContentPage.BindingContext>
         <model:FoodWheelInfoView/>
