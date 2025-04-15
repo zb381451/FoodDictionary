@@ -1,33 +1,124 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDictionary.Pages.AddFood"
              Title="Add Food">
-
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <VerticalStackLayout Padding="10" Spacing="15">
 
-            <!-- set title label color for visibility -->
-            <Label Text="Add Food"
-                   FontSize="24"
-                   TextColor="Black"
-                   HorizontalOptions="Center" 
-                   VerticalOptions="Start" />
+            <Label Text="Add Food" FontSize="24" HorizontalOptions="Center" />
 
-            <!-- set label and entry colors -->
-            <Label Text="Food Name" TextColor="Black"/>
-            <Entry x:Name="NameEntry" Placeholder="Enter food name" TextColor="Black"/>
+            <Grid ColumnSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <Label Text="Serving Size" TextColor="Black"/>
-            <Entry x:Name="ServingSizeEntry" Placeholder="e.g. 1 medium" TextColor="Black"/>
+                <Frame WidthRequest="200" HeightRequest="200" BackgroundColor="LightGray" CornerRadius="200" HasShadow="False">
+                    <Image Source="camera_placeholder.png" VerticalOptions="Center" HorizontalOptions="Center" />
+                </Frame>
 
-            <Label Text="Price (optional)" TextColor="Black"/>
-            <Entry x:Name="PriceEntry" Keyboard="Numeric" Placeholder="e.g. 1.99" TextColor="Black"/>
+                <VerticalStackLayout Grid.Column="1" Spacing="10">
+                    <Entry x:Name="NameEntry" Placeholder="Name" />
+                    <Entry x:Name="ServingSizeEntry" Placeholder="Serving size" />
+                </VerticalStackLayout>
+            </Grid>
 
-            <Button Text="Add Food" Clicked="OnAddFoodClicked" />
+            <Grid ColumnSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <Label x:Name="StatusLabel" TextColor="Green" IsVisible="False" />
+                
+                <VerticalStackLayout Grid.Column="0" Spacing="1" Padding="1">
+                    <Label Text="Vitamins" FontAttributes="Bold" />
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="VitaminA" />
+                        <Label Text="A" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="VitaminB" />
+                        <Label Text="B" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="VitaminC" />
+                        <Label Text="C" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="VitaminD" />
+                        <Label Text="D" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="VitaminE" />
+                        <Label Text="E" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                
+                <VerticalStackLayout Grid.Column="1" Spacing="1" Padding="1">
+                    <Label Text="Minerals" FontAttributes="Bold" />
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="Calcium" />
+                        <Label Text="Calcium" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="Chloride" />
+                        <Label Text="Chloride" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="Magnesium" />
+                        <Label Text="Magnesium" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="Phosphorus" />
+                        <Label Text="Phosphorus" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="Potassium" />
+                        <Label Text="Potassium" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="Sodium" />
+                        <Label Text="Sodium" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <CheckBox x:Name="Sulfur" />
+                        <Label Text="Sulfur" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
+
+            <Label Text="Allergens" FontAttributes="Bold" />
+            <HorizontalStackLayout>
+                <Entry x:Name="AllergenEntry" Placeholder="Enter allergen" WidthRequest="300"/>
+                <Button Text="+" Clicked="OnAddAllergenClicked" />
+                <Button Text="-" Clicked="OnRemoveAllergenClicked" />
+            </HorizontalStackLayout>
+
+            <Label Text="Ingredients" FontAttributes="Bold" />
+            <HorizontalStackLayout>
+                <Entry x:Name="IngredientEntry" Placeholder="Enter ingredient" WidthRequest="300" />
+                <Button Text="+" Clicked="OnAddIngredientClicked" />
+                <Button Text="-" Clicked="OnRemoveIngredientClicked" />
+            </HorizontalStackLayout>
+
+            <Label Text="Other facts" FontAttributes="Bold" />
+            <HorizontalStackLayout >
+                <Entry x:Name="FactEntry" Placeholder="Enter fact" WidthRequest="300"/>
+                <Button Text="+" Clicked="OnAddFactClicked" />
+                <Button Text="-" Clicked="OnRemoveFactClicked" />
+            </HorizontalStackLayout>
+
+            <Button Text="Add Food" Clicked="OnAddFoodClicked" BackgroundColor="LightGreen" />
 
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+
