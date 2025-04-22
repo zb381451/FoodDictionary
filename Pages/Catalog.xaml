@@ -1,52 +1,79 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FoodDictionary.Pages.Catalog"
-             Title="Catalog"
-             BackgroundColor="White">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="FoodDictionary.Pages.Catalog"
+    Title="Catalog"
+    BackgroundColor="White">
 
-    <VerticalStackLayout Padding="15,0" Spacing="10" BackgroundColor="White">
+    <VerticalStackLayout Padding="15" Spacing="10">
 
-        <Border BackgroundColor="White" Stroke="Black" StrokeThickness="4"
-                StrokeShape="RoundRectangle 10,10,10,10" HorizontalOptions="Fill" HeightRequest="60">
-            <HorizontalStackLayout Padding="15,0" Spacing="10">
-                <Image Source="food_dictionary_search.png" HeightRequest="45" WidthRequest="45"/>
-
-                <!-- search box handling -->
-                <Entry x:Name="SearchTerm"
-                       Placeholder="Search"
-                       FontSize="25"
-                       TextColor="Black"
-                       TextChanged="SearchTerm_TextChanged" />
+        <!-- Search bar -->
+        <Border 
+        BackgroundColor="White" 
+        Stroke="Black" 
+        StrokeThickness="4"
+        StrokeShape="RoundRectangle 10"
+        HorizontalOptions="Fill" 
+        HeightRequest="60">
+            <HorizontalStackLayout Padding="15" Spacing="10">
+                <Image 
+            Source="food_dictionary_search.png"
+            HeightRequest="45" 
+            WidthRequest="45"/>
+                <Entry 
+            x:Name="SearchTerm"
+            Placeholder="Search"
+            FontSize="25"
+            TextColor="Black"
+            TextChanged="SearchTerm_TextChanged"/>
             </HorizontalStackLayout>
         </Border>
 
+        <!-- Filter -->
         <HorizontalStackLayout Padding="15,0" Spacing="10" HorizontalOptions="End">
-            <ImageButton Source="food_dictionary_filter.png" WidthRequest="5" HeightRequest="5"/>
+            <ImageButton 
+          Source="food_dictionary_filter.png"
+          WidthRequest="20" 
+          HeightRequest="20"/>
             <Label Text="Filter" FontSize="20" TextColor="Black"/>
         </HorizontalStackLayout>
 
-        <!--dynamic list of foods -->
-        <CollectionView ItemsSource="{Binding FoodItems}" BackgroundColor="White">
+        <!-- Dynamic list of FoodDetail -->
+        <CollectionView 
+        ItemsSource="{Binding Items}"
+        BackgroundColor="White">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="Black" CornerRadius="10" Padding="10" Margin="10" BackgroundColor="White">
-                        <VerticalStackLayout>
+                    <Frame 
+              BorderColor="Black"
+              BackgroundColor="White"
+              CornerRadius="10"
+              Padding="10"
+              Margin="10">
+                        <VerticalStackLayout Spacing="4">
+
                             <Label Text="{Binding Name}" FontSize="20" TextColor="Black"/>
                             <Label Text="{Binding Serving_Size}" FontSize="14" TextColor="Black"/>
                             <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" FontSize="14" TextColor="Black"/>
+                            <Label Text="{Binding Vitamins, StringFormat='Vitamins: {0}'}" FontSize="14" TextColor="Black"/>
+                            <Label Text="{Binding Minerals, StringFormat='Minerals: {0}'}" FontSize="14" TextColor="Black"/>
+                            <Label Text="{Binding Allergens, StringFormat='Allergens: {0}'}" FontSize="14" TextColor="Black"/>
+                            <Label Text="{Binding Ingredients, StringFormat='Ingredients: {0}'}" FontSize="14" TextColor="Black"/>
+                            <Label Text="{Binding OtherFacts, StringFormat='Other Facts: {0}'}" FontSize="14" TextColor="Black"/>
 
-                            <!-- delete button -->
-                            <Button Text="Delete" Clicked="OnDeleteClicked"
-                                    TextColor="White" BackgroundColor="Red"
-                                    CommandParameter="{Binding .}" />
+                            <Button 
+                  Text="Delete" 
+                  BackgroundColor="Red" 
+                  TextColor="White"
+                  CommandParameter="{Binding .}" 
+                  Clicked="OnDeleteClicked"/>
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        
         <ScrollView>
             <Grid>
                 <Grid.RowDefinitions>
@@ -114,4 +141,3 @@
 
     </VerticalStackLayout>
 </ContentPage>
-

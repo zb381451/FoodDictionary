@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FoodDictionary.Models
 {
-    class OtherFact
+    public class OtherFact
     {
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }

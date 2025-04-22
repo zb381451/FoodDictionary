@@ -1,101 +1,97 @@
+using System;
+using System.Collections.ObjectModel;
+using Microsoft.Maui.Controls;
 using FoodDictionary.Services;
 using FoodDictionary.Models;
-using System.Collections.ObjectModel; 
 
-namespace FoodDictionary.Pages;
-
-public partial class Catalog : ContentPage
+namespace FoodDictionary.Pages
 {
-    public ObservableCollection<Food> FoodItems { get; set; } = new();
-
-    private readonly DatabaseService _databaseService = new();
-
-    public Catalog()
+    public partial class Catalog : ContentPage
     {
-        InitializeComponent();
-        BindingContext = this; 
+        public ObservableCollection<FoodDetail> Items { get; } = new();
 
-        // set bg from app state
-        var appState = Application.Current?.Handler?.MauiContext?.Services.GetService<AppState>();
-        if (appState != null)
+        private readonly DatabaseService _databaseService = new();
+
+        public Catalog()
         {
-            this.BackgroundColor = appState.BackgroundColor;
-        }
-    }
+            InitializeComponent();
+            BindingContext = this;
 
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
-
-        // reapply bg
-        var appState = Application.Current?.Handler?.MauiContext?.Services.GetService<AppState>();
-        if (appState != null)
-        {
-            this.BackgroundColor = appState.BackgroundColor;
+            // set bg from app state
+            var appState = Application.Current?.Handler?.MauiContext?.Services.GetService<AppState>();
+            if (appState != null) BackgroundColor = appState.BackgroundColor;
         }
 
-        // pull food items from DB and update list
-        await _databaseService.InitAsync();
-        var items = await DatabaseService.GetConnection().Table<Food>().ToListAsync();
-        FoodItems.Clear();
-        foreach (var food in items)
+        protected override async void OnAppearing()
         {
-            FoodItems.Add(food);
+            base.OnAppearing();
+
+            // reapply bg
+            var appState = Application.Current?.Handler?.MauiContext?.Services.GetService<AppState>();
+            if (appState != null) BackgroundColor = appState.BackgroundColor;
+
+            // pull food items from DB and update list
+            await _databaseService.InitAsync();
+            Items.Clear();
+
+            var foods = await DatabaseService.GetConnection().Table<Food>().ToListAsync();
+            foreach (var f in foods)
+            {
+                Items.Add(new FoodDetail
+                {
+                    Id = f.Id,
+                    Name = f.Name,
+                    Serving_Size = f.Serving_Size,
+                    Price = f.Price,
+                    Vitamins = string.Join(", ", await _databaseService.GetVitaminsForFoodAsync(f.Id)),
+                    Minerals = string.Join(", ", await _databaseService.GetMineralsForFoodAsync(f.Id)),
+                    Allergens = string.Join(", ", await _databaseService.GetAllergensForFoodAsync(f.Id)),
+                    Ingredients = string.Join(", ", await _databaseService.GetIngredientsForFoodAsync(f.Id)),
+                    OtherFacts = string.Join(", ", await _databaseService.GetFactsForFoodAsync(f.Id)),
+                });
+            }
         }
-    }
 
-    // deletes item from DB and list
-    private async void OnDeleteClicked(object sender, EventArgs e)
-    {
-        var button = sender as Button;
-        var food = button?.CommandParameter as Food;
-        if (food == null) return;
-
-        bool confirm = await DisplayAlert("Delete", $"Delete {food.Name}?", "Yes", "No");
-        if (confirm)
+        // deletes item from DB and list
+        private async void OnDeleteClicked(object sender, EventArgs e)
         {
-            await DatabaseService.GetConnection().DeleteAsync(food);
-            FoodItems.Remove(food);
+            if (sender is Button btn && btn.CommandParameter is FoodDetail detail)
+            {
+                var ok = await DisplayAlert("Delete",
+                    $"Remove {detail.Name} and all its data?", "Yes", "No");
+                if (!ok) return;
+
+                await _databaseService.DeleteFoodAsync(detail.Id);
+                Items.Remove(detail);
+            }
         }
-    }
 
-    //lets user rename food name
-    private async void OnEditClicked(object sender, EventArgs e)
-    {
-        var button = sender as Button;
-        var food = button?.CommandParameter as Food;
-        if (food == null) return;
-
-        string newName = await DisplayPromptAsync("Edit Name", "New name:", initialValue: food.Name);
-        if (!string.IsNullOrWhiteSpace(newName))
+        // live search by name
+        private async void SearchTerm_TextChanged(object sender, TextChangedEventArgs e)
         {
-            food.Name = newName;
-            await DatabaseService.GetConnection().UpdateAsync(food);
-            OnAppearing(); // refresh
-        }
-    }
-    // runs every time the user types into the search box
-    private async void SearchTerm_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        // make sure the database is ready
-        await _databaseService.InitAsync();
+            var q = e.NewTextValue?.ToLower() ?? "";
+            await _databaseService.InitAsync();
+            var foods = await DatabaseService.GetConnection().Table<Food>().ToListAsync();
 
-        // grab all food items from the database
-        var allItems = await DatabaseService.GetConnection().Table<Food>().ToListAsync();
-
-        // get what the user typed (in lowercase for easy matching)
-        string query = e.NewTextValue?.ToLower() ?? "";
-
-        // filter the list by name
-        var filteredItems = allItems
-            .Where(food => food.Name?.ToLower().Contains(query) ?? false)
-            .ToList();
-
-        // show only the filtered items
-        FoodItems.Clear();
-        foreach (var item in filteredItems)
-        {
-            FoodItems.Add(item);
+            Items.Clear();
+            foreach (var f in foods)
+            {
+                if (f.Name?.ToLower().Contains(q) ?? false)
+                {
+                    Items.Add(new FoodDetail
+                    {
+                        Id = f.Id,
+                        Name = f.Name,
+                        Serving_Size = f.Serving_Size,
+                        Price = f.Price,
+                        Vitamins = string.Join(", ", await _databaseService.GetVitaminsForFoodAsync(f.Id)),
+                        Minerals = string.Join(", ", await _databaseService.GetMineralsForFoodAsync(f.Id)),
+                        Allergens = string.Join(", ", await _databaseService.GetAllergensForFoodAsync(f.Id)),
+                        Ingredients = string.Join(", ", await _databaseService.GetIngredientsForFoodAsync(f.Id)),
+                        OtherFacts = string.Join(", ", await _databaseService.GetFactsForFoodAsync(f.Id)),
+                    });
+                }
+            }
         }
     }
 }
