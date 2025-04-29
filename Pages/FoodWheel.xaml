@@ -33,13 +33,22 @@
                        TextColor="Black"/>
             </chart:SfCircularChart.Title>
 
-            <chart:PieSeries ItemsSource="{Binding Data}"
+            <chart:PieSeries x:Name="pieChart"
+                             ItemsSource="{Binding StartData}"
                              XBindingPath="Name"
                              YBindingPath="Region"
                              PaletteBrushes="{Binding CustomBrushes}"
                              ShowDataLabels="True"
-                             LabelTemplate="{StaticResource labelTemplate}"/>
+                             LabelTemplate="{StaticResource labelTemplate}">
+
+                <chart:PieSeries.SelectionBehavior>
+                    <chart:DataPointSelectionBehavior SelectionBrush="#314A6E" SelectionChanged="DataPointSelectionBehavior_SelectionChanged"/>
+                </chart:PieSeries.SelectionBehavior>
+                
+            </chart:PieSeries>
         </chart:SfCircularChart>
+        
+        <Button Text="Reset" x:Name="resetButton" BackgroundColor="SkyBlue" IsEnabled="False" IsVisible="False" Clicked="resetButton_Clicked"/>
 
     </VerticalStackLayout>
 
