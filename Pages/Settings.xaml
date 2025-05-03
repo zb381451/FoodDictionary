@@ -3,29 +3,110 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDictionary.Pages.Settings"
              Title="Settings">
+    <ScrollView>
+        <VerticalStackLayout Padding="15">
+            <Label Text="Background Color" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
 
-    <VerticalStackLayout Padding="10">
-        <Label Text="Settings" FontSize="24" HorizontalOptions="Center" />
-        <Label Text="Choose Background Color" Margin="0,20,0,5" TextColor="Black" />
+            <Border Stroke="Black"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 6"
+                    Padding="4">
+                <Picker x:Name="ColorPicker"
+                        SelectedIndexChanged="OnColorSelected"
+                        TextColor="Black"
+                        BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>White</x:String>
+                        <x:String>LightGray</x:String>
+                        <x:String>LightBlue</x:String>
+                        <x:String>LightYellow</x:String>
+                        <x:String>LightGreen</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Border>
 
-        <Border Stroke="Black"
-                StrokeThickness="1"
-                StrokeShape="RoundRectangle 6"
-                Padding="4">
-            <Picker x:Name="ColorPicker"
-                    SelectedIndexChanged="OnColorSelected"
-                    TextColor="Black"
-                    BackgroundColor="Gray">
-                <Picker.Items>
-                    <x:String>White</x:String>
-                    <x:String>LightGray</x:String>
-                    <x:String>LightBlue</x:String>
-                    <x:String>LightYellow</x:String>
-                    <x:String>LightGreen</x:String>
-                </Picker.Items>
-            </Picker>
-        </Border>
-    </VerticalStackLayout>
+            <Label Text="Age" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
+
+            <Border Stroke="Black"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 6"
+                    Padding="4">
+                <Entry x:Name="ageEntry" Keyboard="Numeric" TextChanged="OnAgeChanged"/>
+            </Border>
+
+            <Label Text="Sex" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
+
+            <Border Stroke="Black"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 6"
+                    Padding="4">
+                <Picker x:Name="sexPicker"
+                        SelectedIndexChanged="OnSexSelected"
+                        TextColor="Black"
+                        BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>Male</x:String>
+                        <x:String>Female</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Border>
+
+            <VerticalStackLayout Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="Feet" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="75"/>
+                    <Label x:Name="feetNumLabel" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="50"/>
+                    <HorizontalStackLayout Padding="10">
+                        <Button Text="+" FontSize="Large" Clicked="OnAddFootClicked"/>
+                        <Button Text="-" FontSize="Large" Clicked="OnRemoveFootClicked"/>
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Label Text="Inches" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="75"/>
+                    <Label x:Name="inchesNumLabel" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="50"/>
+                    <HorizontalStackLayout Padding="10">
+                        <Button Text="+" FontSize="Large" Clicked="OnAddInchClicked"/>
+                        <Button Text="-" FontSize="Large" Clicked="OnRemoveInchClicked"/>
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <Label Text="Weight (Ibs)" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
+
+            <Border Stroke="Black"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 6"
+                    Padding="4">
+                <Entry x:Name ="weightEntry" Keyboard="Numeric" TextChanged="OnWeightChanged"/>
+            </Border>
+
+            <Label Text="Activity" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
+
+            <Border Stroke="Black"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 6"
+                    Padding="4">
+                <Picker x:Name="activityPicker"
+                        SelectedIndexChanged="OnActivitySelected"
+                        TextColor="Black"
+                        BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>Sedentary</x:String>
+                        <x:String>Light</x:String>
+                        <x:String>Moderate</x:String>
+                        <x:String>Active</x:String>
+                        <x:String>Very Active</x:String>
+                        <x:String>Extra Active</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Border>
+
+            <Label Text="Basal Metabolic Rate" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
+            <Label x:Name="BMRLabel" Text="0 calories/day" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+    
 </ContentPage>
 
 
