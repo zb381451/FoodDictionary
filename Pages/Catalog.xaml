@@ -3,54 +3,59 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="FoodDictionary.Pages.Catalog"
-    Title="Catalog"
-    BackgroundColor="White">
+    Title="Catalog">
 
     <VerticalStackLayout Padding="15" Spacing="10">
 
         <!-- Search bar -->
         <Border 
-        BackgroundColor="White" 
-        Stroke="Black" 
-        StrokeThickness="4"
-        StrokeShape="RoundRectangle 10"
-        HorizontalOptions="Fill" 
-        HeightRequest="60">
+            BackgroundColor="White" 
+            Stroke="Black" 
+            StrokeThickness="4"
+            StrokeShape="RoundRectangle 10"
+            HorizontalOptions="Fill" 
+            HeightRequest="60">
             <HorizontalStackLayout Padding="15" Spacing="10">
                 <Image 
-            Source="food_dictionary_search.png"
-            HeightRequest="45" 
-            WidthRequest="45"/>
+                    Source="food_dictionary_search.png"
+                    HeightRequest="45" 
+                    WidthRequest="45"/>
                 <Entry 
-            x:Name="SearchTerm"
-            Placeholder="Search"
-            FontSize="25"
-            TextColor="Black"
-            TextChanged="SearchTerm_TextChanged"/>
+                    x:Name="SearchTerm"
+                    Placeholder="Search"
+                    FontSize="25"
+                    TextColor="Black"
+                    TextChanged="SearchTerm_TextChanged"/>
             </HorizontalStackLayout>
         </Border>
 
         <!-- Filter -->
         <HorizontalStackLayout Padding="15,0" Spacing="10" HorizontalOptions="End">
             <ImageButton 
-          Source="food_dictionary_filter.png"
-          WidthRequest="20" 
-          HeightRequest="20"/>
+                Source="food_dictionary_filter.png"
+                WidthRequest="20" 
+                HeightRequest="20"/>
             <Label Text="Filter" FontSize="20" TextColor="Black"/>
         </HorizontalStackLayout>
 
         <!-- Dynamic list of FoodDetail -->
         <CollectionView 
-        ItemsSource="{Binding Items}"
-        BackgroundColor="White">
+            ItemsSource="{Binding Items}"
+            BackgroundColor="White">
+
+            <!--two-column grid layout -->
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Span="2" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame 
-              BorderColor="Black"
-              BackgroundColor="White"
-              CornerRadius="10"
-              Padding="10"
-              Margin="10">
+                        BorderColor="Black"
+                        BackgroundColor="White"
+                        CornerRadius="10"
+                        Padding="10"
+                        Margin="10">
                         <VerticalStackLayout Spacing="4">
 
                             <Label Text="{Binding Name}" FontSize="20" TextColor="Black"/>
@@ -63,11 +68,11 @@
                             <Label Text="{Binding OtherFacts, StringFormat='Other Facts: {0}'}" FontSize="14" TextColor="Black"/>
 
                             <Button 
-                  Text="Delete" 
-                  BackgroundColor="Red" 
-                  TextColor="White"
-                  CommandParameter="{Binding .}" 
-                  Clicked="OnDeleteClicked"/>
+                                Text="Delete" 
+                                BackgroundColor="Red" 
+                                TextColor="White"
+                                CommandParameter="{Binding .}" 
+                                Clicked="OnDeleteClicked"/>
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
