@@ -24,7 +24,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label TextColor="Black" WidthRequest="200" Text="Vitamin A Favorites" HorizontalTextAlignment="Start" FontSize="Large"/>
-                    <Image Source="food_dictionary_dots.png" Grid.Column="1" HorizontalOptions="End" HeightRequest="10"/>
+                    <ImageButton Source="food_dictionary_dots.png" Grid.Column="1" HorizontalOptions="End" HeightRequest="10" Clicked="ImageButton_Clicked"/>
                 </Grid>
 
                 <Grid RowSpacing="5">
