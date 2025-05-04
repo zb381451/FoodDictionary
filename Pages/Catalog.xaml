@@ -3,146 +3,135 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="FoodDictionary.Pages.Catalog"
-    Title="Catalog">
+    Title="Catalog"
+    BackgroundColor="White">
 
-    <VerticalStackLayout Padding="15" Spacing="10">
+    <VerticalStackLayout Padding="10" Spacing="10">
 
-        <!-- Search bar -->
+
         <Border 
-            BackgroundColor="White" 
-            Stroke="Black" 
-            StrokeThickness="4"
-            StrokeShape="RoundRectangle 10"
-            HorizontalOptions="Fill" 
-            HeightRequest="60">
-            <HorizontalStackLayout Padding="15" Spacing="10">
+        BackgroundColor="White" 
+        Stroke="Black" 
+        StrokeThickness="4"
+        StrokeShape="RoundRectangle 10"
+        HorizontalOptions="Fill" 
+        HeightRequest="60">
+            <HorizontalStackLayout Padding="08" Spacing="10">
                 <Image 
-                    Source="food_dictionary_search.png"
-                    HeightRequest="45" 
-                    WidthRequest="45"/>
+            Source="food_dictionary_search.png"
+            HeightRequest="45" 
+            WidthRequest="45"/>
                 <Entry 
-                    x:Name="SearchTerm"
-                    Placeholder="Search"
-                    FontSize="25"
-                    TextColor="Black"
-                    TextChanged="SearchTerm_TextChanged"/>
+            x:Name="SearchTerm"
+            Placeholder="Search"
+            FontSize="35"
+            TextColor="Black"
+            TextChanged="SearchTerm_TextChanged">
+                </Entry>
             </HorizontalStackLayout>
         </Border>
 
-        <!-- Filter -->
-        <HorizontalStackLayout Padding="15,0" Spacing="10" HorizontalOptions="End">
+
+        <HorizontalStackLayout Padding="01,01" Spacing="10" HorizontalOptions="End">
             <ImageButton 
-                Source="food_dictionary_filter.png"
-                WidthRequest="20" 
-                HeightRequest="20"/>
-            <Label Text="Filter" FontSize="20" TextColor="Black"/>
+          Source="food_dictionary_filter.png"
+          WidthRequest="20" 
+          HeightRequest="20"/>
+            <Label Text="Filter" FontSize="20" TextColor="Black" VerticalOptions="Center"/>
         </HorizontalStackLayout>
 
-        <!-- Dynamic list of FoodDetail -->
         <CollectionView 
             ItemsSource="{Binding Items}"
-            BackgroundColor="White">
-
-            <!--two-column grid layout -->
+            BackgroundColor="White"
+            Margin="0,10"
+            SelectionMode="None">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Span="2" Orientation="Vertical" />
+                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15"/>
             </CollectionView.ItemsLayout>
-
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame 
-                        BorderColor="Black"
-                        BackgroundColor="White"
-                        CornerRadius="10"
-                        Padding="10"
-                        Margin="10">
-                        <VerticalStackLayout Spacing="4">
+        BorderColor="Black"
+        BackgroundColor="White"
+        CornerRadius="10"
+        Padding="10"
+        Margin="5"
+        HasShadow="False">
 
-                            <Label Text="{Binding Name}" FontSize="20" TextColor="Black"/>
-                            <Label Text="{Binding Serving_Size}" FontSize="14" TextColor="Black"/>
-                            <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" FontSize="14" TextColor="Black"/>
-                            <Label Text="{Binding Vitamins, StringFormat='Vitamins: {0}'}" FontSize="14" TextColor="Black"/>
-                            <Label Text="{Binding Minerals, StringFormat='Minerals: {0}'}" FontSize="14" TextColor="Black"/>
-                            <Label Text="{Binding Allergens, StringFormat='Allergens: {0}'}" FontSize="14" TextColor="Black"/>
-                            <Label Text="{Binding Ingredients, StringFormat='Ingredients: {0}'}" FontSize="14" TextColor="Black"/>
-                            <Label Text="{Binding OtherFacts, StringFormat='Other Facts: {0}'}" FontSize="14" TextColor="Black"/>
+
+
+
+                        <VerticalStackLayout Spacing="5">
 
                             <Button 
-                                Text="Delete" 
-                                BackgroundColor="Red" 
-                                TextColor="White"
-                                CommandParameter="{Binding .}" 
-                                Clicked="OnDeleteClicked"/>
+Text="Delete" 
+ImageSource="trash_icon.png"
+BackgroundColor="MistyRose" 
+TextColor="White"
+    WidthRequest="24"
+            HeightRequest="24"
+            HorizontalOptions="End"
+            VerticalOptions="Start"                              
+CommandParameter="{Binding .}" 
+Clicked="OnDeleteClicked"/>
+
+
+
+                            <Image 
+                Source="{Binding Image}" 
+                HeightRequest="100" 
+                WidthRequest="150" 
+                Aspect="AspectFill"
+                HorizontalOptions="Center"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label 
+                    Text="{Binding Name}" 
+                    FontSize="16" 
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    Grid.Column="0"
+                    HorizontalOptions="StartAndExpand"/>
+                                <Label 
+                    Text="{Binding Price, StringFormat='{0:C}'}" 
+                    FontSize="14"
+                    TextColor="Black"
+                    Grid.Column="1"
+                    HorizontalOptions="EndAndExpand"/>
+                                <Label
+                    Text="{Binding Serving_Size, StringFormat= 'Serving Size: {0}'}"
+                    FontSize="14" 
+                    TextColor="Black"
+                    HorizontalOptions="CenterAndExpand"/>
+                            </Grid>
+
+
+
+                            <Label 
+                Text="{Binding Vitamins, StringFormat='Vitamins: {0}'}" 
+                FontSize="12" 
+                TextColor="Black"/>
+
+                            <Label 
+                Text="{Binding Minerals, StringFormat='Minerals: {0}'}" 
+                FontSize="12" 
+                TextColor="Black"/>
+
+                            <Label 
+                Text="{Binding OtherFacts, StringFormat='Other Facts: {0}'}" 
+                FontSize="12" 
+                TextColor="Black"/>
+
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <ScrollView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <!-- First -->
-                <VerticalStackLayout Grid.Row="0" Grid.Column="0">
-                    <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10">
-                        <Image Source="food_dictionary_no_image.png"/>
-                    </Border>
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Food name" FontSize="25" TextColor="Black"/>
-                        <Label Text="Price" FontSize="15" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black"/>
-                    </HorizontalStackLayout>
-                    <Label Text="Serving size" FontSize="15" TextColor="Black"/>
-                    <Label Text="Vitamins &amp; minerals" FontSize="15" TextColor="Black"/>
-                </VerticalStackLayout>
-
-                <!-- Second -->
-                <VerticalStackLayout Grid.Row="0" Grid.Column="1">
-                    <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10">
-                        <Image Source="food_dictionary_no_image.png"/>
-                    </Border>
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Food name" FontSize="25" TextColor="Black"/>
-                        <Label Text="Price" FontSize="15" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black"/>
-                    </HorizontalStackLayout>
-                    <Label Text="Serving size" FontSize="15" TextColor="Black"/>
-                    <Label Text="Vitamins &amp; minerals" FontSize="15" TextColor="Black"/>
-                </VerticalStackLayout>
-
-                <!-- Third -->
-                <VerticalStackLayout Grid.Row="1" Grid.Column="0">
-                    <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10">
-                        <Image Source="food_dictionary_no_image.png"/>
-                    </Border>
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Food name" FontSize="25" TextColor="Black"/>
-                        <Label Text="Price" FontSize="15" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black"/>
-                    </HorizontalStackLayout>
-                    <Label Text="Serving size" FontSize="15" TextColor="Black"/>
-                    <Label Text="Vitamins &amp; minerals" FontSize="15" TextColor="Black"/>
-                </VerticalStackLayout>
-
-                <!-- Fourth -->
-                <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                    <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10">
-                        <Image Source="food_dictionary_no_image.png"/>
-                    </Border>
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="Food name" FontSize="25" TextColor="Black"/>
-                        <Label Text="Price" FontSize="15" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black"/>
-                    </HorizontalStackLayout>
-                    <Label Text="Serving size" FontSize="15" TextColor="Black"/>
-                    <Label Text="Vitamins &amp; minerals" FontSize="15" TextColor="Black"/>
-                </VerticalStackLayout>
-            </Grid>
-        </ScrollView>
 
     </VerticalStackLayout>
 </ContentPage>

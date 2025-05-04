@@ -22,12 +22,19 @@ namespace FoodDictionary.Pages
 			_databaseService = databaseService;
 		}
 
+		private FileResult _selectedImage;
 		private async void OnAddFoodClicked(object sender, EventArgs e)
 		{
 			await _databaseService.InitAsync();
 
 			string name = NameEntry.Text?.Trim();
 			string serving = ServingSizeEntry.Text?.Trim();
+			string priceText = PriceEntry.Text?.Trim();
+			decimal? price = null;
+			if (decimal.TryParse(priceText, out decimal parsedPrice))
+			{
+				price = parsedPrice;
+			}
 
 			if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(serving))
 			{
@@ -39,16 +46,16 @@ namespace FoodDictionary.Pages
 			{
 				Name = name,
 				Serving_Size = serving,
-				Price = null,
-				Image = "i need to figureout how to get the camera working"
+				Price = price,
+				Image = _selectedImage?.FullPath
 			};
 
 			try
 			{
 				await _databaseService.AddFoodAsync(newFood);
 
-				
-				var vitamins = new[] { VitaminA, VitaminB, VitaminC, VitaminD, VitaminE};
+
+				var vitamins = new[] { VitaminA, VitaminB, VitaminC, VitaminD, VitaminE };
 				var vitaminNames = new[] { "A", "B", "C", "D", "E" };
 
 				for (int i = 0; i < vitamins.Length; i++)
@@ -59,7 +66,7 @@ namespace FoodDictionary.Pages
 					}
 				}
 
-				
+
 				var minerals = new[] { Calcium, Chloride, Magnesium, Phosphorus, Potassium, Sodium, Sulfur };
 				var mineralNames = new[] { "Calcium", "Chloride", "Magnesium", "Phosphorus", "Potassium", "Sodium", "Sulfur" };
 
@@ -71,19 +78,19 @@ namespace FoodDictionary.Pages
 					}
 				}
 
-			
+
 				foreach (var allergen in _allergens)
 				{
 					await _databaseService.AddAllergenToFoodAsync(newFood.Id, allergen);
 				}
 
-			
+
 				foreach (var ingredient in _ingredients)
 				{
 					await _databaseService.AddIngredientToFoodAsync(newFood.Id, ingredient);
 				}
 
-				
+
 				foreach (var fact in _facts)
 				{
 					await _databaseService.AddFactToFoodAsync(newFood.Id, fact);
@@ -163,6 +170,24 @@ namespace FoodDictionary.Pages
 		{
 			if (_facts.Any())
 				_facts.RemoveAt(_facts.Count - 1);
+		}
+
+		private async void OnPickImageClicked(object sender, EventArgs e)
+		{
+			try
+			{
+				_selectedImage = await MediaPicker.PickPhotoAsync();
+
+				if (_selectedImage != null)
+				{
+					var stream = await _selectedImage.OpenReadAsync();
+					FoodImage.Source = ImageSource.FromStream(() => stream);
+				}
+			}
+			catch (Exception ex)
+			{
+				await DisplayAlert("Error", $"Image selection failed: {ex.Message}", "OK");
+			}
 		}
 	}
 }
