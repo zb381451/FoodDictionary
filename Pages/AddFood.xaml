@@ -13,13 +13,19 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Frame WidthRequest="200" HeightRequest="200" BackgroundColor="LightGray" CornerRadius="200" HasShadow="False">
-                    <Image Source="camera_placeholder.png" VerticalOptions="Center" HorizontalOptions="Center" />
-                </Frame>
+                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Frame WidthRequest="200" HeightRequest="200" BackgroundColor="LightGray" CornerRadius="10" HasShadow="False" Padding="0">
+                    <Image x:Name="FoodImage" Source="camera_placeholder.png" Aspect="AspectFill" WidthRequest="200" HeightRequest="200" HorizontalOptions="Fill" VerticalOptions="Fill" />
+                    </Frame>
+                    <Button Text="Pick Image" Clicked="OnPickImageClicked" />
+                </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1" Spacing="10">
                     <Entry x:Name="NameEntry" Placeholder="Name" />
                     <Entry x:Name="ServingSizeEntry" Placeholder="Serving size" />
+                    <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                    <Entry x:Name="PriceEntry" Placeholder="$00.00" Keyboard="Numeric" WidthRequest="100" HorizontalOptions="Start" />
+                    </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Grid>
 

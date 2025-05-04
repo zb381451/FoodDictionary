@@ -17,5 +17,6 @@ namespace FoodDictionary.Models
         public string Allergens { get; set; }
         public string Ingredients { get; set; }
         public string OtherFacts { get; set; }
-    }
+		public string Image { get; internal set; }
+	}
 }
