@@ -131,7 +131,19 @@
                             FontSize="12" 
                             TextColor="Black"/>
 
-                            <!-- Other Facts -->
+                            <!--Allergens-->
+                            <Label 
+                            Text="{Binding Allergens, StringFormat='Allergens: {0}'}" 
+                            FontSize="12" 
+                            TextColor="Black" />
+                            <!-- ingredients-->
+                            <Label 
+                            Text="{Binding Ingredients, StringFormat='Ingredients: {0}'}" 
+                            FontSize="12" 
+                            TextColor="Black"/>
+                  
+
+                                    <!-- Other Facts -->
                             <Label 
                             Text="{Binding OtherFacts, StringFormat='Other Facts: {0}'}" 
                             FontSize="12" 
