@@ -117,6 +117,9 @@ namespace FoodDictionary.Pages
 		{
 			NameEntry.Text = "";
 			ServingSizeEntry.Text = "";
+			PriceEntry.Text = "";
+
+
 			VitaminA.IsChecked = false;
 			VitaminB.IsChecked = false;
 			VitaminC.IsChecked = false;
