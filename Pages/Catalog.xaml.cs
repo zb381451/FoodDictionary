@@ -8,6 +8,7 @@ namespace FoodDictionary.Pages
 {
 	public partial class Catalog : ContentPage
 	{
+		// Observable collection bound to collectionView
 		public ObservableCollection<FoodDetail> Items { get; } = new();
 
 		private readonly DatabaseService _databaseService = new();
@@ -30,7 +31,7 @@ namespace FoodDictionary.Pages
 			var appState = Application.Current?.Handler?.MauiContext?.Services.GetService<AppState>();
 			if (appState != null) BackgroundColor = appState.BackgroundColor;
 
-
+			// Load data from database
 			await _databaseService.InitAsync();
 			Items.Clear();
 

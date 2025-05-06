@@ -2,17 +2,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDictionary.Pages.AddFood"
              Title="Add Food">
+    <!-- Wrapped everthing in a scrollview to -->
     <ScrollView>
         <VerticalStackLayout Padding="10" Spacing="15">
 
             <Label Text="Add Food" FontSize="24" HorizontalOptions="Center" />
 
+            <!-- Grid for image and basic name, size, price -->
             <Grid ColumnSpacing="20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
+                <!-- Left side: Image preview and pick button -->
                 <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
                     <Frame WidthRequest="200" HeightRequest="200" BackgroundColor="LightGray" CornerRadius="10" HasShadow="False" Padding="0">
                         <Image x:Name="FoodImage" Source="camera_placeholder.png" Aspect="AspectFill" WidthRequest="200" HeightRequest="200" HorizontalOptions="Fill" VerticalOptions="Fill" />
@@ -20,6 +23,7 @@
                     <Button Text="Pick Image" Clicked="OnPickImageClicked" />
                 </VerticalStackLayout>
 
+                <!-- Right side: Text entries for name, serving size, and price -->
                 <VerticalStackLayout Grid.Column="1" Spacing="10">
                     <Entry x:Name="NameEntry" Placeholder="Name" />
                     <Entry x:Name="ServingSizeEntry" Placeholder="Serving size" />
@@ -29,13 +33,14 @@
                 </VerticalStackLayout>
             </Grid>
 
+            <!-- Grid for vitamin and mineral checkboxes -->
             <Grid ColumnSpacing="20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-
+                <!-- Vitamin selection -->
                 <VerticalStackLayout Grid.Column="0" Spacing="1" Padding="1">
                     <Label Text="Vitamins" FontAttributes="Bold" />
                     <HorizontalStackLayout>
@@ -60,7 +65,7 @@
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
 
-
+                <!-- Mineral selection -->
                 <VerticalStackLayout Grid.Column="1" Spacing="1" Padding="1">
                     <Label Text="Minerals" FontAttributes="Bold" />
 
@@ -101,6 +106,7 @@
                 </VerticalStackLayout>
             </Grid>
 
+            <!-- Allergen entry with add/remove buttons -->
             <Label Text="Allergens" FontAttributes="Bold" />
             <HorizontalStackLayout>
                 <Entry x:Name="AllergenEntry" Placeholder="Enter allergen" WidthRequest="300"/>
@@ -108,6 +114,7 @@
                 <Button Text="-" Clicked="OnRemoveAllergenClicked" />
             </HorizontalStackLayout>
 
+            <!-- Ingredient entry with add/remove buttons -->
             <Label Text="Ingredients" FontAttributes="Bold" />
             <HorizontalStackLayout>
                 <Entry x:Name="IngredientEntry" Placeholder="Enter ingredient" WidthRequest="300" />
@@ -115,6 +122,7 @@
                 <Button Text="-" Clicked="OnRemoveIngredientClicked" />
             </HorizontalStackLayout>
 
+            <!-- Other facts entry with add/remove buttons -->
             <Label Text="Other facts" FontAttributes="Bold" />
             <HorizontalStackLayout >
                 <Entry x:Name="FactEntry" Placeholder="Enter fact" WidthRequest="300"/>
