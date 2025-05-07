@@ -32,7 +32,7 @@ namespace FoodDictionary.Pages
         {
             if (e.NewIndexes.Count != 0)
             {
-                if (pieChart.ItemsSource == viewModel.StartData)
+                if (pieChart.ItemsSource == viewModel.StartData) // For starting regions in pie chart
                 {
                     if (e.NewIndexes[e.NewIndexes.Count - 1] == 0)
                     {
@@ -40,30 +40,30 @@ namespace FoodDictionary.Pages
                     }
                     else if (e.NewIndexes[e.NewIndexes.Count - 1] == 1)
                     {
-                        pieChart.ItemsSource = viewModel.SDData;
+                        pieChart.ItemsSource = viewModel.SDData; // Specialized Diets
                     }
                     else if (e.NewIndexes[e.NewIndexes.Count - 1] == 2)
                     {
-                        pieChart.ItemsSource = viewModel.MNData;
+                        pieChart.ItemsSource = viewModel.MNData; // Macronutrients
                     }
                     else if (e.NewIndexes[e.NewIndexes.Count - 1] == 3)
                     {
-                        pieChart.ItemsSource = viewModel.AFData;
+                        pieChart.ItemsSource = viewModel.AFData; // Allergy-free
                     }
 
                     resetButton.IsEnabled = true;
                     resetButton.IsVisible = true;
                     pieChart.SelectionBehavior.ClearSelection();
                 }
-                else if (pieChart.ItemsSource == viewModel.VnMData)
+                else if (pieChart.ItemsSource == viewModel.VnMData) // Vitamins & Minerals display
                 {
                     if (e.NewIndexes[e.NewIndexes.Count - 1] == 0)
                     {
-                        pieChart.ItemsSource = viewModel.MData;
+                        pieChart.ItemsSource = viewModel.MData; // Minerals
                     }
                     else if (e.NewIndexes[e.NewIndexes.Count - 1] == 1)
                     {
-                        pieChart.ItemsSource = viewModel.VData;
+                        pieChart.ItemsSource = viewModel.VData; // Vitamins
                     }
 
                     pieChart.SelectionBehavior.ClearSelection();
@@ -71,7 +71,7 @@ namespace FoodDictionary.Pages
             }
         }
 
-        private void resetButton_Clicked(object sender, EventArgs e)
+        private void resetButton_Clicked(object sender, EventArgs e) // Sets the pie chart back to the start
         {
             pieChart.ItemsSource = viewModel.StartData;
             pieChart.SelectionBehavior.ClearSelection();

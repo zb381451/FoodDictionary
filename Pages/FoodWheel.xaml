@@ -20,7 +20,7 @@
             <chart:SfCircularChart.Resources>
                 <DataTemplate x:Key="labelTemplate">
                     <HorizontalStackLayout>
-                        <Label Text="{Binding Item.Name}" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding Item.Name}" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"/> <!--Chart region label-->
                     </HorizontalStackLayout>
                 </DataTemplate>
             </chart:SfCircularChart.Resources>
@@ -33,8 +33,9 @@
                        TextColor="Black"/>
             </chart:SfCircularChart.Title>
 
+            <!--Initialize chart with starting regions and colors-->
             <chart:PieSeries x:Name="pieChart"
-                             ItemsSource="{Binding StartData}"
+                             ItemsSource="{Binding StartData}" 
                              XBindingPath="Name"
                              YBindingPath="Region"
                              PaletteBrushes="{Binding CustomBrushes}"
@@ -42,13 +43,13 @@
                              LabelTemplate="{StaticResource labelTemplate}">
 
                 <chart:PieSeries.SelectionBehavior>
-                    <chart:DataPointSelectionBehavior SelectionBrush="#314A6E" SelectionChanged="DataPointSelectionBehavior_SelectionChanged"/>
+                    <chart:DataPointSelectionBehavior SelectionBrush="#314A6E" SelectionChanged="DataPointSelectionBehavior_SelectionChanged"/> <!--Control to select regions-->
                 </chart:PieSeries.SelectionBehavior>
                 
             </chart:PieSeries>
         </chart:SfCircularChart>
         
-        <Button Text="Reset" x:Name="resetButton" BackgroundColor="SkyBlue" IsEnabled="False" IsVisible="False" Clicked="resetButton_Clicked"/>
+        <Button Text="Reset" x:Name="resetButton" IsEnabled="False" IsVisible="False" Clicked="resetButton_Clicked"/> <!--Reset Button control, only available after the first sselection-->
 
     </VerticalStackLayout>
 

@@ -23,9 +23,4 @@ public partial class MyLists : ContentPage
         if (appState != null)
             this.BackgroundColor = appState.BackgroundColor;
     }
-
-    private void ImageButton_Clicked(object sender, EventArgs e)
-    {
-
-    }
 }
