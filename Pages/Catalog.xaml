@@ -6,9 +6,10 @@
     Title="Catalog"
     BackgroundColor="White">
 
-    <VerticalStackLayout Padding="10" Spacing="10">
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="10">
 
-
+        <!-- Search bar -->
         <Border 
         BackgroundColor="White" 
         Stroke="Black" 
@@ -18,120 +19,141 @@
         HeightRequest="60">
             <HorizontalStackLayout Padding="08" Spacing="10">
                 <Image 
-            Source="food_dictionary_search.png"
-            HeightRequest="45" 
-            WidthRequest="45"/>
+                Source="food_dictionary_search.png"
+                HeightRequest="45" 
+                WidthRequest="45"/>
                 <Entry 
-            x:Name="SearchTerm"
-            Placeholder="Search"
-            FontSize="35"
-            TextColor="Black"
-            TextChanged="SearchTerm_TextChanged">
+                x:Name="SearchTerm"
+                Placeholder="Search"
+                VerticalOptions="Center"
+                FontSize="20"
+                TextColor="Black"
+                TextChanged="SearchTerm_TextChanged">
                 </Entry>
             </HorizontalStackLayout>
         </Border>
 
-
-        <HorizontalStackLayout Padding="01,01" Spacing="10" HorizontalOptions="End">
-            <ImageButton 
-          Source="food_dictionary_filter.png"
-          WidthRequest="20" 
-          HeightRequest="20"/>
-            <Label Text="Filter" FontSize="20" TextColor="Black" VerticalOptions="Center"/>
+        <!-- Filter button -->
+        <HorizontalStackLayout Padding="01,01" Spacing="05" HorizontalOptions="End">
+        <ImageButton 
+        Source="food_dictionary_filter.png"
+        WidthRequest="05" 
+        HeightRequest="05"
+        Padding="3"/>
+            
+        <Label Text="Filter" FontSize="17" TextColor="Black" VerticalOptions="Center"/>
         </HorizontalStackLayout>
 
+        <!-- Catalog items collection -->
         <CollectionView 
-            ItemsSource="{Binding Items}"
-            BackgroundColor="White"
-            Margin="0,10"
-            SelectionMode="None">
+        ItemsSource="{Binding Items}"
+        BackgroundColor="White"
+        Margin="0,10"
+        SelectionMode="None">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15"/>
+            <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="10"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame 
-        BorderColor="Black"
-        BackgroundColor="White"
-        CornerRadius="10"
-        Padding="10"
-        Margin="5"
-        HasShadow="False">
+                    BorderColor="Black"
+                    BackgroundColor="White"
+                    CornerRadius="10"
+                    Padding="05"
+                    Margin="5"
+                    HasShadow="False">
 
 
 
 
                         <VerticalStackLayout Spacing="5">
-
+                            <!-- Delete button -->
                             <Button 
-Text="Delete" 
-ImageSource="trash_icon.png"
-BackgroundColor="MistyRose" 
-TextColor="White"
-    WidthRequest="24"
-            HeightRequest="24"
-            HorizontalOptions="End"
-            VerticalOptions="Start"                              
-CommandParameter="{Binding .}" 
-Clicked="OnDeleteClicked"/>
+                            Text="Delete" 
+                            ImageSource="trash_icon.png"
+                            BackgroundColor="MistyRose" 
+                            TextColor="White"
+                            WidthRequest="24"
+                            HeightRequest="24"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start"                              
+                            CommandParameter="{Binding .}" 
+                            Clicked="OnDeleteClicked"/>
 
 
-
+                            <!-- Food image -->
                             <Image 
-                Source="{Binding Image}" 
-                HeightRequest="100" 
-                WidthRequest="150" 
-                Aspect="AspectFill"
-                HorizontalOptions="Center"/>
+                            Source="{Binding Image}" 
+                            HeightRequest="100" 
+                            WidthRequest="150" 
+                            Aspect="AspectFill"
+                            HorizontalOptions="Center"/>
 
+                            <!-- Name, price, serving size -->
                             <Grid>
-                                <Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label 
-                    Text="{Binding Name}" 
-                    FontSize="16" 
-                    FontAttributes="Bold"
-                    TextColor="Black"
-                    Grid.Column="0"
-                    HorizontalOptions="StartAndExpand"/>
-                                <Label 
-                    Text="{Binding Price, StringFormat='{0:C}'}" 
-                    FontSize="14"
-                    TextColor="Black"
-                    Grid.Column="1"
-                    HorizontalOptions="EndAndExpand"/>
-                                <Label
-                    Text="{Binding Serving_Size, StringFormat= 'Serving Size: {0}'}"
-                    FontSize="14" 
-                    TextColor="Black"
-                    HorizontalOptions="CenterAndExpand"/>
+                                    </Grid.ColumnDefinitions>
+                            <Label 
+                            Text="{Binding Name}" 
+                            FontSize="16" 
+                            FontAttributes="Bold"
+                            TextColor="Black"
+                            Grid.Row="0" Grid.Column="0"/>
+                            <Label 
+                            Text="{Binding Price, StringFormat='{0:C}'}" 
+                            FontSize="14"
+                            TextColor="Black"
+                            Grid.Row="0" Grid.Column="1"/>
+                            <Label
+                            Text="{Binding Serving_Size, StringFormat='Serving Size: {0}'}"
+                            FontSize="14" 
+                            TextColor="Black"
+                            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                            Margin="0,4,0,0"/>
                             </Grid>
 
 
-
+                            <!-- Vitamins -->
                             <Label 
-                Text="{Binding Vitamins, StringFormat='Vitamins: {0}'}" 
-                FontSize="12" 
-                TextColor="Black"/>
+                            Text="{Binding Vitamins, StringFormat='Vitamins: {0}'}" 
+                            FontSize="12" 
+                            TextColor="Black"/>
 
+                            <!-- Minerals -->
                             <Label 
-                Text="{Binding Minerals, StringFormat='Minerals: {0}'}" 
-                FontSize="12" 
-                TextColor="Black"/>
+                            Text="{Binding Minerals, StringFormat='Minerals: {0}'}" 
+                            FontSize="12" 
+                            TextColor="Black"/>
 
+                            <!--Allergens-->
                             <Label 
-                Text="{Binding OtherFacts, StringFormat='Other Facts: {0}'}" 
-                FontSize="12" 
-                TextColor="Black"/>
+                            Text="{Binding Allergens, StringFormat='Allergens: {0}'}" 
+                            FontSize="12" 
+                            TextColor="Black" />
+                            <!-- ingredients-->
+                            <Label 
+                            Text="{Binding Ingredients, StringFormat='Ingredients: {0}'}" 
+                            FontSize="12" 
+                            TextColor="Black"/>
+                  
+
+                                    <!-- Other Facts -->
+                            <Label 
+                            Text="{Binding OtherFacts, StringFormat='Other Facts: {0}'}" 
+                            FontSize="12" 
+                            TextColor="Black"/>
 
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
