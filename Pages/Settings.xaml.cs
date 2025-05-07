@@ -65,7 +65,7 @@ public partial class Settings : ContentPage
     private void OnAgeChanged(object sender, TextChangedEventArgs e)
     {
         user.age = int.Parse(ageEntry.Text);
-        if (user.age > 150)
+        if (user.age > 150) // Max age of 150
         {
             user.age = 150;
             ageEntry.Text = "150";
@@ -84,7 +84,7 @@ public partial class Settings : ContentPage
     private void OnAddFootClicked(object sender, EventArgs e)
     {
         user.heightFeet++;
-        if (user.heightFeet > 10)
+        if (user.heightFeet > 10) // Max height in feet of 10
             user.heightFeet = 10;
 
         feetNumLabel.Text = user.heightFeet.ToString() + "\'";
@@ -95,7 +95,7 @@ public partial class Settings : ContentPage
     private void OnRemoveFootClicked(object sender, EventArgs e)
     {
         user.heightFeet--;
-        if (user.heightFeet < 0)
+        if (user.heightFeet < 0) // Min eight in feet of 0
             user.heightFeet = 0;
 
         feetNumLabel.Text = user.heightFeet.ToString() + "\'";
@@ -106,7 +106,7 @@ public partial class Settings : ContentPage
     private void OnAddInchClicked(object sender, EventArgs e)
     {
         user.heightInches++;
-        if (user.heightInches > 12)
+        if (user.heightInches > 12) // Max height in inches of 12
             user.heightInches = 12;
 
         inchesNumLabel.Text = user.heightInches.ToString() + "\"";
@@ -117,7 +117,7 @@ public partial class Settings : ContentPage
     private void OnRemoveInchClicked(object sender, EventArgs e)
     {
         user.heightInches--;
-        if (user.heightInches < 0)
+        if (user.heightInches < 0) // Min height in inches of 0
             user.heightInches = 0;
 
         inchesNumLabel.Text = user.heightInches.ToString() + "\"";
@@ -128,7 +128,7 @@ public partial class Settings : ContentPage
     private void OnWeightChanged(object sender, TextChangedEventArgs e)
     {
         user.weight = int.Parse(weightEntry.Text);
-        if (user.weight > 1000)
+        if (user.weight > 1000) // Max weight of 1000
         {
             user.weight = 1000;
             weightEntry.Text = "1000";

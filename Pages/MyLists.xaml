@@ -23,8 +23,10 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
+                    <!--List name-->
                     <Label TextColor="Black" WidthRequest="200" Text="Vitamin A Favorites" HorizontalTextAlignment="Start" FontSize="Large"/>
-                    <ImageButton Source="food_dictionary_dots.png" Grid.Column="1" HorizontalOptions="End" HeightRequest="10" Clicked="ImageButton_Clicked"/>
+                    <!--List options-->
+                    <Image Source="food_dictionary_dots.png" Grid.Column="1" HorizontalOptions="End" HeightRequest="10"/>
                 </Grid>
 
                 <Grid RowSpacing="5">
@@ -40,6 +42,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Preview of foods-->
                     <Label TextColor="Black" WidthRequest="100" Text="Cantaloupe" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="1" WidthRequest="100" Text="Bluefin Tuna" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="2" WidthRequest="100" Text="King Mackerel" HorizontalTextAlignment="Start" FontSize="Small"/>
@@ -59,10 +62,10 @@
         <Border BackgroundColor="#e09396" Stroke="#88918d" StrokeThickness="4" StrokeShape="RoundRectangle 10,10,10,10" HorizontalOptions="Fill" HeightRequest="150">
 
             <VerticalStackLayout 
-        Padding="15,0">
+    Padding="15,0">
 
                 <Grid 
-            Padding="15,15">
+        Padding="15,15">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
@@ -71,8 +74,11 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
+                    <!--List name-->
                     <Label TextColor="Black" WidthRequest="200" Text="Vitamin A Favorites" HorizontalTextAlignment="Start" FontSize="Large"/>
+                    <!--List options-->
                     <Image Source="food_dictionary_dots.png" Grid.Column="1" HorizontalOptions="End" HeightRequest="10"/>
+                    
                 </Grid>
 
                 <Grid RowSpacing="5">
@@ -88,6 +94,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Preview of foods-->
                     <Label TextColor="Black" WidthRequest="100" Text="Cantaloupe" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="1" WidthRequest="100" Text="Bluefin Tuna" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="2" WidthRequest="100" Text="King Mackerel" HorizontalTextAlignment="Start" FontSize="Small"/>
@@ -107,10 +114,10 @@
         <Border BackgroundColor="#94d5f0" Stroke="#88918d" StrokeThickness="4" StrokeShape="RoundRectangle 10,10,10,10" HorizontalOptions="Fill" HeightRequest="150">
 
             <VerticalStackLayout 
-Padding="15,0">
+    Padding="15,0">
 
                 <Grid 
-    Padding="15,15">
+        Padding="15,15">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
@@ -119,8 +126,11 @@ Padding="15,0">
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
+                    <!--List name-->
                     <Label TextColor="Black" WidthRequest="200" Text="Vitamin A Favorites" HorizontalTextAlignment="Start" FontSize="Large"/>
+                    <!--List options-->
                     <Image Source="food_dictionary_dots.png" Grid.Column="1" HorizontalOptions="End" HeightRequest="10"/>
+                    
                 </Grid>
 
                 <Grid RowSpacing="5">
@@ -136,6 +146,7 @@ Padding="15,0">
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Preview of foods-->
                     <Label TextColor="Black" WidthRequest="100" Text="Cantaloupe" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="1" WidthRequest="100" Text="Bluefin Tuna" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="2" WidthRequest="100" Text="King Mackerel" HorizontalTextAlignment="Start" FontSize="Small"/>
@@ -155,10 +166,10 @@ Padding="15,0">
         <Border BackgroundColor="#fcd69d" Stroke="#88918d" StrokeThickness="4" StrokeShape="RoundRectangle 10,10,10,10" HorizontalOptions="Fill" HeightRequest="150">
 
             <VerticalStackLayout 
-Padding="15,0">
+    Padding="15,0">
 
                 <Grid 
-    Padding="15,15">
+        Padding="15,15">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
@@ -167,8 +178,11 @@ Padding="15,0">
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
+                    <!--List name-->
                     <Label TextColor="Black" WidthRequest="200" Text="Vitamin A Favorites" HorizontalTextAlignment="Start" FontSize="Large"/>
+                    <!--List options-->
                     <Image Source="food_dictionary_dots.png" Grid.Column="1" HorizontalOptions="End" HeightRequest="10"/>
+                    
                 </Grid>
 
                 <Grid RowSpacing="5">
@@ -184,6 +198,7 @@ Padding="15,0">
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Preview of foods-->
                     <Label TextColor="Black" WidthRequest="100" Text="Cantaloupe" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="1" WidthRequest="100" Text="Bluefin Tuna" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="2" WidthRequest="100" Text="King Mackerel" HorizontalTextAlignment="Start" FontSize="Small"/>
@@ -203,10 +218,10 @@ Padding="15,0">
         <Border BackgroundColor="#c992c6" Stroke="#88918d" StrokeThickness="4" StrokeShape="RoundRectangle 10,10,10,10" HorizontalOptions="Fill" HeightRequest="150">
 
             <VerticalStackLayout 
-Padding="15,0">
+    Padding="15,0">
 
                 <Grid 
-    Padding="15,15">
+        Padding="15,15">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
@@ -215,8 +230,11 @@ Padding="15,0">
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
+                    <!--List name-->
                     <Label TextColor="Black" WidthRequest="200" Text="Vitamin A Favorites" HorizontalTextAlignment="Start" FontSize="Large"/>
+                    <!--List options-->
                     <Image Source="food_dictionary_dots.png" Grid.Column="1" HorizontalOptions="End" HeightRequest="10"/>
+                    
                 </Grid>
 
                 <Grid RowSpacing="5">
@@ -232,6 +250,7 @@ Padding="15,0">
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
+                    <!--Preview of foods-->
                     <Label TextColor="Black" WidthRequest="100" Text="Cantaloupe" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="1" WidthRequest="100" Text="Bluefin Tuna" HorizontalTextAlignment="Start" FontSize="Small"/>
                     <Label TextColor="Black" Grid.Column="2" WidthRequest="100" Text="King Mackerel" HorizontalTextAlignment="Start" FontSize="Small"/>

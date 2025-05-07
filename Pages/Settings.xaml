@@ -6,7 +6,8 @@
     <ScrollView>
         <VerticalStackLayout Padding="15">
             <Label Text="Background Color" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
-
+            
+            <!--Background color Picker control-->
             <Border Stroke="Black"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle 6"
@@ -26,16 +27,19 @@
             </Border>
 
             <Label Text="Age" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
-
+            
+            <!--Age Entry control-->
             <Border Stroke="Black"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle 6"
                     Padding="4">
-                <Entry x:Name="ageEntry" Keyboard="Numeric" TextChanged="OnAgeChanged"/>
+                <Entry x:Name="ageEntry" Keyboard="Numeric" TextChanged="OnAgeChanged" BackgroundColor="White"/>
             </Border>
 
+            
             <Label Text="Sex" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
 
+            <!--Sex Picker control-->
             <Border Stroke="Black"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle 6"
@@ -54,34 +58,36 @@
             <VerticalStackLayout Padding="10">
                 <HorizontalStackLayout>
                     <Label Text="Feet" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="75"/>
-                    <Label x:Name="feetNumLabel" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="50"/>
+                    <Label x:Name="feetNumLabel" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="50"/> <!--User height in feet label-->
                     <HorizontalStackLayout Padding="10">
-                        <Button Text="+" FontSize="Large" Clicked="OnAddFootClicked"/>
-                        <Button Text="-" FontSize="Large" Clicked="OnRemoveFootClicked"/>
+                        <Button Text="+" FontSize="Large" Clicked="OnAddFootClicked"/> <!--Increase feet button-->
+                        <Button Text="-" FontSize="Large" Clicked="OnRemoveFootClicked"/> <!--Decrease feet button-->
                     </HorizontalStackLayout>
                 </HorizontalStackLayout>
 
                 <HorizontalStackLayout>
                     <Label Text="Inches" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="75"/>
-                    <Label x:Name="inchesNumLabel" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="50"/>
+                    <Label x:Name="inchesNumLabel" FontSize="Large" VerticalTextAlignment="Center" WidthRequest="50"/> <!--User height in inches label-->
                     <HorizontalStackLayout Padding="10">
-                        <Button Text="+" FontSize="Large" Clicked="OnAddInchClicked"/>
-                        <Button Text="-" FontSize="Large" Clicked="OnRemoveInchClicked"/>
+                        <Button Text="+" FontSize="Large" Clicked="OnAddInchClicked"/> <!--Increase inches button-->
+                        <Button Text="-" FontSize="Large" Clicked="OnRemoveInchClicked"/> <!--Decrease inches button-->
                     </HorizontalStackLayout>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
 
             <Label Text="Weight (Ibs)" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
 
+            <!--Weight Entry control-->
             <Border Stroke="Black"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle 6"
                     Padding="4">
-                <Entry x:Name ="weightEntry" Keyboard="Numeric" TextChanged="OnWeightChanged"/>
+                <Entry x:Name ="weightEntry" Keyboard="Numeric" TextChanged="OnWeightChanged" BackgroundColor="White"/>
             </Border>
 
             <Label Text="Activity" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
 
+            <!--Activity Picker control (unused)-->
             <Border Stroke="Black"
                     StrokeThickness="1"
                     StrokeShape="RoundRectangle 6"
@@ -102,7 +108,7 @@
             </Border>
 
             <Label Text="Basal Metabolic Rate" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
-            <Label x:Name="BMRLabel" Text="0 calories/day" FontSize="Large" Margin="0,20,0,5" TextColor="Black" />
+            <Label x:Name="BMRLabel" Text="0 calories/day" FontSize="Large" Margin="0,20,0,5" TextColor="Black" /> <!--BMR calculation result label-->
 
         </VerticalStackLayout>
     </ScrollView>
